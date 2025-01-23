@@ -1,0 +1,78 @@
+{
+    "name": "sparv-lsp",
+    "publisher": "Sparv",
+    "displayName": "sparv-lsp",
+    "description": "Extension for the programming language sparv. Enables support for suggestions, syntax highligting, suggestions and code completion.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.94.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:semanticLanguage",
+        "onLanguage:sparv"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "sparv",
+                "extensions": [
+                    ".sparv"
+                ],
+                "aliases": [
+                    "Sparv"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "configurationDefaults": {
+            "[sparv]": {
+                "editor.semanticHighlighting.enabled": true,
+                "editor.defaultFormatter": "Sparv.sparv-lsp"
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Example configuration",
+            "properties": {
+                "languageServerExample.maxNumberOfProblems": {
+                    "scope": "resource",
+                    "type": "number",
+                    "default": 100,
+                    "description": "Controls the maximum number of problems produced by the server."
+                },
+                "[Sparv.sparv-lsp].trace.server": {
+                    "scope": "window",
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "default": "off",
+                    "description": "Traces the communication between VS Code and the language server."
+                }
+            }
+        }
+    },
+    "main": "./out/extension.js",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src",
+        "test": "vscode-test"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.94.0",
+        "@types/mocha": "^10.0.8",
+        "@types/node": "20.x",
+        "typescript": "^5.6.2"
+    }
+}
