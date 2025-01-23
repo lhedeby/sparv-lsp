@@ -14,6 +14,10 @@
         "onLanguage:semanticLanguage",
         "onLanguage:sparv"
     ],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lhedeby/sparv-lsp"
+	},
     "contributes": {
         "languages": [
             {
